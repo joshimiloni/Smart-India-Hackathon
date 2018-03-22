@@ -1,0 +1,44 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<input type="date" name="" placeholder="From" value="From">
+<div id="container">
+</div>
+
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Stacked column chart'
+    },
+    xAxis: {
+        categories: ['2012', '2013', '2014', '2015', '2016']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total fruit consumption'
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+        shared: true
+    },
+   
+    series: [{
+        name: '1AC',
+        data: [10, 12, 15, 13, 20]
+    }, {
+        name: '2AC',
+        data: [22,32, 42, 35, 50]
+    }, {
+        name: '3AC',
+        data: [29, 30, 40, 35, 50]
+    }, {
+        name: 'SL',
+        data: [100, 150, 175, 200, 250]
+
+    }]
+});
+</script>.

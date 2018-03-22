@@ -1,0 +1,117 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+<div class="row">
+            <div class="col-md-6" id="pie"></div>
+            <div class="col-md-6" id="pie2"></div>
+        </div>
+
+
+
+<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+
+<script type="text/javascript">
+Highcharts.chart('pie', {
+    chart: {
+        type: 'pie'
+    },
+    credits: {
+      enabled: false
+  },
+
+  exporting: { 
+    enabled: false 
+},
+    title: {
+        text: ''
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: false,
+            }
+        }	
+    },
+
+    
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'SL',
+            y: 56.33,
+            
+        }, {
+            name: '3AC',
+            y: 24.03,
+            
+        }, {
+            name: '2AC',
+            y: 10.38,
+            
+        }, {
+            name: '1AC',
+            y: 4.77,
+                  
+        }]
+    }],
+    
+});
+
+</script>
+<script type="text/javascript">
+Highcharts.chart('pie2', {
+    chart: {
+        type: 'pie'
+    },
+    credits: {
+      enabled: false
+  },
+
+  exporting: { 
+    enabled: false 
+},
+    title: {
+        text: ''
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: false,
+            }
+        }	
+    },
+
+    
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'SL',
+            y: 56.33,
+            
+        }, {
+            name: '3AC',
+            y: 24.03,
+            
+        }, {
+            name: '2AC',
+            y: 10.38,
+            
+        }, {
+            name: '1AC',
+            y: 4.77,
+                  
+        }]
+    }],
+    
+});
+
+</script>

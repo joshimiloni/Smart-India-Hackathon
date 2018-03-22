@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+ #map {
+        height: 100%;
+        border: 1px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#asd").click(function(){
+      $("#qwe").show();
+    });
+
+  });
+</script>
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">CodeFusion</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li class="active"><a href="#">Additional Trains </a></li>
+      <li><a href="feed.html">Performance Feedback</a></li>
+    </ul>
+    {% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"> Logout <span class="glyphicon glyphicon-off"></span></a></li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+
+<center>
+<form>
+<input type="month" name="date"  id="asd">
+</form>
+</center>
+<div id="qwe" style="display: none;">
+<div class="container" style="margin-top: 50px;">
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="initialize()">
+    <div class="panel-heading" id="maps">
+      <h4 class="panel-title" align="center">
+        
+        Mumbai-Ahmedabad
+      </h4>
+    </div>
+    </a>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body">
+      <center>
+      <table style="width: 68%;">
+<tbody>
+<tr>
+<td >Train No.</td>
+<td >Train Name</td>
+<td >Booking Percent</td>
+</tr>
+<tr>
+<td >&nbsp;12971</td>
+<td >&nbsp;Bhavnagar Express</td>
+<td >&nbsp;209</td>
+</tr>
+<tr>
+<td >19707</td>
+<td >Aravalli Express</td>
+<td >140</td>
+</tr>
+<tr>
+<td >&nbsp;22927</td>
+<td >&nbsp;Lok Shakti Express</td>
+<td >&nbsp;195</td>
+</tr>
+<tr>
+<td >&nbsp;59439</td>
+<td >Ahmedabad Passenger</td>
+<td >&nbsp;123</td>
+</tr>
+<tr>
+<td >&nbsp;12216</td>
+<td >DEE Garibrath</td>
+<td >133</td>
+</tr>
+<tr>
+<td >12480</td>
+<td >Suryanagari Express</td>
+<td >94</td>
+</tr>
+<tr>
+<td >14708</td>
+<td >Ranakpur Express</td>
+<td >192</td>
+</tr>
+<tr>
+<td >19097</td>
+<td >Saurashtra Janata Express</td>
+<td >&nbsp;92</td>
+</tr>
+<tr>
+<td >19027</td>
+<td >Vivek Express</td>
+<td >174</td>
+</tr>
+<tr>
+<td >19029</td>
+<td >BDTS DEE Express</td>
+<td >173</td>
+</tr>
+<tr>
+<td >12933</td>
+<td >Karnavati Express</td>
+<td >193</td>
+</tr>
+</tbody>
+</table>
+<!-- DivTable.com -->
+<p>&nbsp;</p>
+      
+    <input type="text" name="start" id="start" value="Source">
+    <input type="text" name="end" id="end" value="Destination">
+    
+    
+    <div style="height: 400px; width: 550px;">
+    <div id="map"></div>
+    </div>
+    </center>
+    </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+    <div class="panel-heading">
+      <h4 class="panel-title" align="center">
+        
+        New Delhi - Kolkata
+      </h4>
+    </div>
+    </a>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body"></div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+    <div class="panel-heading">
+      <h4 class="panel-title" align="center">
+       
+        Bhopal-New Delhi
+      </h4>
+    </div>
+    </a>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body"></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+   <script>
+    $(".nav li").on("click", function() {
+      $(".nav li").removeClass("active");
+      $(this).addClass("active");
+    });
+
+      function initialize()
+      {
+        initMap();  
+      }
+
+      $("#maps").click(function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 27.8913, lng: 78.0792}
+          
+        });
+        directionsDisplay.setMap(map);
+        var onChangeHandler = function() {
+          document.getElementById('start').value='Mumbai';
+          document.getElementById('end').value='Ahemadabad';
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        //document.getElementById('body').addEventListener('mouseover', initialize);
+        document.getElementById('start').addEventListener('mouseover', onChangeHandler);
+        document.getElementById('end').addEventListener('mouseover', onChangeHandler);
+      });
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: document.getElementById('start').value,
+          destination: document.getElementById('end').value,
+          travelMode: 'TRANSIT'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZQTP2s50Hn-Y7cnmXm5lH8J2g8H9EJrk &callback=initMap">
+
+</script> 
+</body>
+</html>
